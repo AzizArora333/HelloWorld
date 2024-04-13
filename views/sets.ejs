@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO Sets Collection</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <%- include('partials/navbar', {page: 'sets'}) %>
+
+  <div class="hero min-h-screen bg-base-200">
+      <div class="hero-content text-center">
+          <div class="max-w-md">
+              <h1 class="text-5xl font-bold">LEGO Sets Collection</h1>
+              <table class="table-fixed border-collapse border border-slate-500 mt-4">
+                  <thead>
+                      <tr>
+                          <th class="border border-slate-600">Image</th>
+                          <th class="border border-slate-600">Name</th>
+                          <th class="border border-slate-600">Theme</th>
+                          <th class="border border-slate-600">Year</th>
+                          <th class="border border-slate-600">Parts</th>
+                          <th class="border border-slate-600">Details</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% sets.forEach(function(set) { %>
+                          <tr>
+                              <td class="border border-slate-700"><img src="<%= set.img_url %>" alt="<%= set.name %>" style="width:100px;height:auto;"></td>
+                              <td class="border border-slate-700"><%= set.name %></td>
+                              <td class="border border-slate-700"><a href="/lego/sets?theme=<%= set.theme %>"><%= set.theme %></a></td>
+                              <td class="border border-slate-700"><%= set.year %></td>
+                              <td class="border border-slate-700"><%= set.num_parts %></td>
+                              <td class="border border-slate-700"><a href="/lego/sets/<%= set.set_num %>">Details</a></td>
+                          </tr>
+                      <% }); %>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</body>
+</html>
